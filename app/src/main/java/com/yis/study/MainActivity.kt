@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.yis.study.annotation.AnnotationActivity
+import com.yis.study.http.HttpActivity
 import com.yis.study.proxy.ProxyActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         btnAnnotation.setOnClickListener {
             startActivity(Intent(this, AnnotationActivity::class.java))
+        }
+
+        btnRetrofit.setOnClickListener {
+            startActivity(Intent(this, HttpActivity::class.java))
         }
     }
 }

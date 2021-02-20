@@ -20,7 +20,11 @@
 
         <activity android:name=".proxy.ProxyActivity"/>
         <activity android:name=".annotation.AnnotationActivity"/>
+        <activity android:name=".http.HttpActivity"/>
+        <activity android:name=".http.retrofit.RetrofitActivity"/>
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
