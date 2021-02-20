@@ -3,13 +3,12 @@ package com.yis.study.http;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
 import com.yis.study.R;
+import com.yis.study.http.okhttp.OkhttpActivity;
 import com.yis.study.http.retrofit.RetrofitActivity;
 
 /**
@@ -28,9 +27,8 @@ public class HttpActivity extends Activity {
         btnOkhttp = findViewById(R.id.btn_okhttp);
         btnRetrofit = findViewById(R.id.btn_retrofit);
 
-        btnOkhttp.setOnClickListener(view -> {
-
-        });
+        btnOkhttp.setOnClickListener(view ->
+                startActivity(new Intent(HttpActivity.this, OkhttpActivity.class)));
 
         btnRetrofit.setOnClickListener(view ->
                 startActivity(new Intent(HttpActivity.this, RetrofitActivity.class)));

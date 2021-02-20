@@ -22,6 +22,7 @@
         <activity android:name=".annotation.AnnotationActivity"/>
         <activity android:name=".http.HttpActivity"/>
         <activity android:name=".http.retrofit.RetrofitActivity"/>
+        <activity android:name=".http.okhttp.OkhttpActivity"/>
 
     </application>
 
