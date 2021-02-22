@@ -16,6 +16,9 @@ import com.yis.study.http.retrofit.bean.RegisterResp;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,6 +59,7 @@ public class RetrofitActivity extends Activity {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.wanandroid.com")
+                .client(genericClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -102,7 +106,7 @@ public class RetrofitActivity extends Activity {
                 RegisterResp resp = response.body();
                 if (resp.getErrorCode() == 0) {
                     tvContent.setText("注册..用户名为" + resp.getData().getUsername() + "\n密码为:" + resp.getData().getPassword());
-                }else {
+                } else {
                     tvContent.setText(resp.getErrorMsg());
                 }
             }
@@ -140,5 +144,14 @@ public class RetrofitActivity extends Activity {
                 tvContent.setText(t.getMessage());
             }
         });
+    }
+
+    /**
+     * 使用自定义的 OkHttpClient
+     */
+    public OkHttpClient genericClient() {
+        // 添加日志拦截器
+        return new OkHttpClient.Builder()
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
     }
 }
