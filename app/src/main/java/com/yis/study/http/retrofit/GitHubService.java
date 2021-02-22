@@ -3,6 +3,7 @@ package com.yis.study.http.retrofit;
 import com.yis.study.http.retrofit.bean.GongzhonghaoResp;
 import com.yis.study.http.retrofit.bean.RegisterResp;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -21,6 +22,14 @@ public interface GitHubService {
      */
     @GET("wxarticle/chapters/json")
     Call<GongzhonghaoResp> chapters();
+
+    /**
+     * 获取公众号列表-rxjava
+     *
+     * @return
+     */
+    @GET("wxarticle/chapters/json")
+    Observable<GongzhonghaoResp> rxjavaChapters();
 
     /**
      * 注册
