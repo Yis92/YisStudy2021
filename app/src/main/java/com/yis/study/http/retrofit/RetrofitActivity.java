@@ -4,20 +4,24 @@ package com.yis.study.http.retrofit;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.yis.study.R;
 import com.yis.study.http.retrofit.bean.GongzhonghaoResp;
 import com.yis.study.http.retrofit.bean.RegisterResp;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitActivity extends Activity {
 
     private Button btnGet;
+    private Button btnRxjavaGet;
     private Button btnPostRegister;
     private Button btnPostLogin;
     private TextView tvContent;
@@ -41,11 +46,14 @@ public class RetrofitActivity extends Activity {
         setContentView(R.layout.activity_retrofit);
 
         btnGet = findViewById(R.id.btn_get);
+        btnRxjavaGet = findViewById(R.id.btn_rxjava_get);
         btnPostRegister = findViewById(R.id.btn_post_register);
         btnPostLogin = findViewById(R.id.btn_post_login);
         tvContent = findViewById(R.id.tv_content);
 
         btnGet.setOnClickListener(view -> get());
+
+        btnRxjavaGet.setOnClickListener(view -> rxjavaGet());
 
         btnPostRegister.setOnClickListener(view -> postRegister());
 
@@ -86,6 +94,56 @@ public class RetrofitActivity extends Activity {
                 Log.i("qqq", "失败：" + t.getMessage());
             }
         });
+    }
+
+    /**
+     * get 请求demo -rxjava
+     */
+    public void rxjavaGet() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.wanandroid.com")
+                .client(genericClient())
+                // 配置 rxjava2 adapter,用于结合Retrofit使用，替换 retrofit 默认的adapterFactories，使用上替换Call
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        GitHubService gitHubService = retrofit.create(GitHubService.class);
+        Observable<GongzhonghaoResp> observable = gitHubService.rxjavaChapters();
+
+        observable.subscribeOn(Schedulers.io())// 在IO线程进行网络请求
+                .observeOn(AndroidSchedulers.mainThread())// 回到主线程 处理请求结果
+                .subscribe(new Observer<GongzhonghaoResp>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(GongzhonghaoResp resp) {
+                        if (resp.getErrorCode() == 0) {
+                            List<GongzhonghaoResp.DataBean> data = resp.getData();
+
+                            StringBuilder sb = new StringBuilder();
+                            for (GongzhonghaoResp.DataBean name : data) {
+                                sb.append(name.getName() + "\n");
+                            }
+
+                            tvContent.setText(sb.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        Log.i("qqq", "失败：" + t.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
