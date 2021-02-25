@@ -2,6 +2,9 @@ package com.yis.study.fanxing;
 
 import com.yis.study.fanxing.tongpeifu.Fruit;
 import com.yis.study.fanxing.tongpeifu.GenericType;
+import com.yis.study.fanxing.tongpeifu.bean.Father;
+import com.yis.study.fanxing.tongpeifu.bean.People;
+import com.yis.study.fanxing.tongpeifu.bean.Son;
 
 /**
  * 泛型
@@ -11,6 +14,7 @@ public class FanxingActivity {
 
     public static void main(String... args) {
         System.out.println("1230");
+        instanceofQuestion();
     }
 
     class A<T> {
@@ -48,10 +52,23 @@ public class FanxingActivity {
 
     /**
      * 通配符 下界
-     *
+     *412
      * @param genericType super 只能用于 ？
      */
     public void dosome3(GenericType<? super Fruit> genericType) {
 
+    }
+
+    /**
+     * 使用instanceof会失败，是因为类型信息已经被擦除，因此我们可以引入类型标签Class< T>，就可以转用动态的isInstance()。
+     */
+    public static void instanceofQuestion() {
+        People<Father> people = new People<Father>(Father.class);
+        System.out.println(people.compare(new Father()));// true
+        System.out.println(people.compare(new Son()));// true
+
+        People<Son> son = new People<Son>(Son.class);
+        System.out.println(son.compare(new Father()));// false
+        System.out.println(son.compare(new Son()));// true
     }
 }
