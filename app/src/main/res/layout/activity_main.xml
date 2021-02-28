@@ -6,37 +6,59 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btnProxy"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent"
             android:text="静态代理&amp;动态代理"
-            android:textSize="18sp"
-            android:background="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:textSize="18sp" />
 
         <Button
-            android:layout_marginTop="5dp"
             android:id="@+id/btnAnnotation"
-            android:text="注解&amp;反射"
-            android:textSize="18sp"
-            android:background="@color/primary"
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/primary"
+            android:text="注解&amp;反射"
+            android:textSize="18sp" />
 
         <Button
-            android:layout_marginTop="5dp"
             android:id="@+id/btnRetrofit"
-            android:text="http"
-            android:textSize="18sp"
-            android:background="@color/colorAccent"
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:text="http"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+
+        <Button
+            android:id="@+id/btnHandlerThread"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/primary"
+            android:text="HandlerThread"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnActivity"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/primary"
+            android:text="Activity"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

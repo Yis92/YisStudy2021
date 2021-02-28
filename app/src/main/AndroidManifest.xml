@@ -23,6 +23,11 @@
         <activity android:name=".http.HttpActivity"/>
         <activity android:name=".http.retrofit.RetrofitActivity"/>
         <activity android:name=".http.okhttp.OkhttpActivity"/>
+        <activity android:name=".handler.HandlerActivity"/>
+        <activity android:name=".handler.MyHandlerThread"/>
+        <activity android:name=".service.MyServiceActivity"/>
+        <activity android:name=".activity.MyActivity"/>
+        <activity android:name=".activity.TwoActivity"/>
 
     </application>
 
