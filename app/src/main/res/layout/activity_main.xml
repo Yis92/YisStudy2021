@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
-            android:background="@color/primary"
+            android:background="@color/colorAccent"
             android:text="注解&amp;反射"
             android:textSize="18sp" />
 
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
-            android:background="@color/colorAccent"
+            android:background="@color/primary"
             android:text="http"
             android:textAllCaps="false"
             android:textSize="18sp" />
@@ -55,8 +55,18 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
-            android:background="@color/primary"
+            android:background="@color/colorAccent"
             android:text="Activity"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnService"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:text="Service"
             android:textAllCaps="false"
             android:textSize="18sp" />
 

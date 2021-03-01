@@ -8,6 +8,7 @@ import com.yis.study.annotation.AnnotationActivity
 import com.yis.study.handler.MyHandlerThread
 import com.yis.study.http.HttpActivity
 import com.yis.study.proxy.ProxyActivity
+import com.yis.study.service.MyServiceActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         btnActivity.setOnClickListener {
             startActivity(Intent(this, MyActivity::class.java))
+        }
+
+        btnService.setOnClickListener {
+            startActivity(Intent(this, MyServiceActivity::class.java))
         }
     }
 }
