@@ -9,6 +9,8 @@ import com.yis.study.handler.MyHandlerThread
 import com.yis.study.http.HttpActivity
 import com.yis.study.proxy.ProxyActivity
 import com.yis.study.service.MyServiceActivity
+import com.yis.study.view.MyViewTouchActivity
+import com.yis.study.view.chongtu.MyChongtuActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +41,14 @@ class MainActivity : AppCompatActivity() {
 
         btnService.setOnClickListener {
             startActivity(Intent(this, MyServiceActivity::class.java))
+        }
+
+        btnTouch.setOnClickListener {
+            startActivity(Intent(this, MyViewTouchActivity::class.java))
+        }
+
+        btnTouchChongtu.setOnClickListener {
+            startActivity(Intent(this, MyChongtuActivity::class.java))
         }
     }
 }

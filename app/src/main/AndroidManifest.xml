@@ -28,10 +28,13 @@
         <activity android:name=".service.MyServiceActivity" />
         <activity android:name=".activity.MyActivity" />
         <activity android:name=".activity.TwoActivity" />
+        <activity android:name=".view.MyViewTouchActivity" />
 
 
         <service android:name=".service.MyService" />
         <service android:name=".service.BindMyService" />
+        <activity android:name=".view.chongtu.MyChongtuActivity" />
+
 
     </application>
 
