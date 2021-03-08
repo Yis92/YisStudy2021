@@ -34,10 +34,15 @@
         <service android:name=".service.MyService" />
         <service android:name=".service.BindMyService" />
         <activity android:name=".view.chongtu.MyChongtuActivity" />
+        <activity android:name=".xingneng.XingNengYouHuaActivity" />
+        <activity android:name=".xingneng.oom.OomActivity" />
+        <activity android:name=".xingneng.oom.MatUseActivity" />
+        <activity android:name=".xingneng.oom.ANRActivity" />
 
 
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name ="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

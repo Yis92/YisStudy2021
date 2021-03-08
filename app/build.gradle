@@ -52,5 +52,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
     // rxjava2 adapter,用于结合Retrofit使用，替换 retrofit 默认的adapterFactories，使用上替换Call
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
-
+    // Leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 }

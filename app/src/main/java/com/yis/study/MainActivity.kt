@@ -11,6 +11,7 @@ import com.yis.study.proxy.ProxyActivity
 import com.yis.study.service.MyServiceActivity
 import com.yis.study.view.MyViewTouchActivity
 import com.yis.study.view.chongtu.MyChongtuActivity
+import com.yis.study.xingneng.XingNengYouHuaActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
 
         btnTouchChongtu.setOnClickListener {
             startActivity(Intent(this, MyChongtuActivity::class.java))
+        }
+
+        btnXingNeng.setOnClickListener {
+            startActivity(Intent(this, XingNengYouHuaActivity::class.java))
         }
     }
 }
