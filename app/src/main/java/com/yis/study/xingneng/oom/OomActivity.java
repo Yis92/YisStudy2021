@@ -15,20 +15,23 @@ import androidx.annotation.NonNull;
 import com.yis.study.R;
 import com.yis.study.base.BaseActivity;
 
+import butterknife.BindView;
+
 /**
  * 内存优化
  * Created by liuyi on 2021-03-05.
  */
 public class OomActivity extends BaseActivity {
 
-    private Button btnMatUse;
-//
-//    private Handler handler = new Handler(Looper.getMainLooper()) {
-//        @Override
-//        public void handleMessage(@NonNull Message msg) {
-//            super.handleMessage(msg);
-//        }
-//    };
+    @BindView(R.id.btn_mat_use)
+    Button btnMatUse;
+
+    private Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
 
     @Override
@@ -38,9 +41,8 @@ public class OomActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        btnMatUse = findViewById(R.id.btn_mat_use);
 
-        SingleInstance.getInstance(this).say();
+//        SingleInstance.getInstance(this).say();
 
         btnMatUse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,19 +51,21 @@ public class OomActivity extends BaseActivity {
             }
         });
 
-        getMemorySize();
+//        getMemorySize();
 
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
 //                try {
-//                    Thread.sleep(2000);
+//                    Thread.sleep(20000);
 //                } catch (InterruptedException e) {
 //                    e.printStackTrace();
 //                }
-//                handler.sendMessage(new Message());
 //            }
 //        }).start();
+
+        handler.sendMessageDelayed(new Message(), 20000);
+
 
     }
 
@@ -71,4 +75,12 @@ public class OomActivity extends BaseActivity {
         int size = activityManager.getMemoryClass();
         Log.i("qqq", "内存大小为：" + size);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+
 }

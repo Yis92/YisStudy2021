@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
@@ -13,6 +14,7 @@ import com.yis.study.base.BaseActivity;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +28,10 @@ public class MatUseActivity extends BaseActivity {
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"};
 
+    WeakReference<Activity> weakReference;
+
+    MyThread thread;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_mat_use;
@@ -33,19 +39,23 @@ public class MatUseActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        weakReference = new WeakReference<Activity>(this);
         verifyStoragePermissions(this);
 
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000 * 30);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                createDumpFile(MatUseActivity.this);
-            }
-        }.start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(1000 * 30);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                createDumpFile(weakReference.get());
+//            }
+//        }).start();
+
+        thread = new MyThread();
+        thread.start();
     }
 
 
@@ -98,5 +108,30 @@ public class MatUseActivity extends BaseActivity {
         return bool;
     }
 
+    static class MyThread extends Thread {
 
+        private boolean mRunning = false;
+
+        @Override
+        public void run() {
+            mRunning = true;
+            if (mRunning) {
+                // 不要以为Java永远会帮你清理回收正在运行的threads。在上面的代码中，
+                // 我们很容易误以为当Activity结束销毁时会帮我们把正在运行的thread也结束回收掉，
+                // 但事情永远不是这样的！Java threads会一直存在，只有当线程运行完成或被杀死掉，
+                // 线程才会被回收。所以我们应该养成为thread设置退出逻辑条件的习惯。
+                SystemClock.sleep(10000);
+            }
+        }
+
+        void close(){
+            mRunning = false;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        thread.close();
+    }
 }
