@@ -38,6 +38,7 @@
         <activity android:name=".xingneng.oom.OomActivity" />
         <activity android:name=".xingneng.oom.MatUseActivity" />
         <activity android:name=".xingneng.oom.ANRActivity" />
+        <activity android:name=".list.MyRecyclerViewActivity" />
 
 
     </application>

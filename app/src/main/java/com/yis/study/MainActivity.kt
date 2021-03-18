@@ -7,6 +7,7 @@ import com.yis.study.activity.MyActivity
 import com.yis.study.annotation.AnnotationActivity
 import com.yis.study.handler.MyHandlerThread
 import com.yis.study.http.HttpActivity
+import com.yis.study.list.MyRecyclerViewActivity
 import com.yis.study.proxy.ProxyActivity
 import com.yis.study.service.MyServiceActivity
 import com.yis.study.view.MyViewTouchActivity
@@ -54,6 +55,10 @@ class MainActivity : AppCompatActivity() {
 
         btnXingNeng.setOnClickListener {
             startActivity(Intent(this, XingNengYouHuaActivity::class.java))
+        }
+
+        btnRecyclerView.setOnClickListener {
+            startActivity(Intent(this, MyRecyclerViewActivity::class.java))
         }
     }
 }

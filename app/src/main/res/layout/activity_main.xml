@@ -100,6 +100,16 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btnRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:text="RecyclerView"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
 </ScrollView>
