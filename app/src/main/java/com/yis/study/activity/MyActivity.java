@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.yis.study.R;
@@ -23,6 +24,11 @@ public class MyActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        if (savedInstanceState != null) {
+            String result = savedInstanceState.getString("xuanzhuang");
+            Log.i("qqq", "旋转后保存的数据：" + result);
+        }
 
         mBtnGo = findViewById(R.id.btn_go);
 
@@ -69,5 +75,11 @@ public class MyActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("qqq", "第一个界面 onDestroy......");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("xuanzhuang", "hahah");
     }
 }
