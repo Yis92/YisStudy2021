@@ -81,5 +81,12 @@ public class MyActivity extends Activity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("xuanzhuang", "hahah");
+        Log.i("qqq", "onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i("qqq", "onRestoreInstanceState");
     }
 }
