@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':study'
 rootProject.name='YisStudy2021'
