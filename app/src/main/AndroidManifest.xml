@@ -39,6 +39,9 @@
         <activity android:name=".xingneng.oom.MatUseActivity" />
         <activity android:name=".xingneng.oom.ANRActivity" />
         <activity android:name=".list.MyRecyclerViewActivity" />
+        <activity android:name=".kaiyuan.KaiYuanStudyMainActivity" />
+        <activity android:name=".kaiyuan.eventbus.EventBusStudyActivity" />
+        <activity android:name=".kaiyuan.eventbus.EbTwoActivity" />
 
 
     </application>
