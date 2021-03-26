@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yis.study" />
+    package="com.yis.study" >
+
+    <application>
+        <activity android:name=".arouter.ARouterStudyActivity"/>
+    </application>
+</manifest>

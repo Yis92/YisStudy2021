@@ -3,6 +3,7 @@
     package="com.yis.study">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -33,6 +34,7 @@
 
         <service android:name=".service.MyService" />
         <service android:name=".service.BindMyService" />
+
         <activity android:name=".view.chongtu.MyChongtuActivity" />
         <activity android:name=".xingneng.XingNengYouHuaActivity" />
         <activity android:name=".xingneng.oom.OomActivity" />
@@ -47,6 +49,6 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name ="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

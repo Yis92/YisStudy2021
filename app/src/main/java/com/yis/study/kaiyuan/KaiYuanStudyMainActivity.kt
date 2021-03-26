@@ -3,8 +3,10 @@ package com.yis.study.kaiyuan
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.yis.study.R
 import com.yis.study.kaiyuan.eventbus.EventBusStudyActivity
+import com.yis.study.path.StudyRouterPath
 import kotlinx.android.synthetic.main.activity_kaiyuan_study_main.*
 
 /**
@@ -19,6 +21,12 @@ class KaiYuanStudyMainActivity : Activity() {
 
         btnEventBus.setOnClickListener {
             startActivity(Intent(this, EventBusStudyActivity::class.java))
+        }
+
+        btnArouter.setOnClickListener {
+            ARouter.getInstance().build(StudyRouterPath.STUDY_ROUTER_PATH)
+                .withString("name", "123")
+                .navigation()
         }
     }
 }
