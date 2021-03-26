@@ -9,9 +9,8 @@ public class SynchronizedMethod {
 
     // 锁的是对象
     private Object obj = new Object();
-    // 锁的类
+    // 锁的是对象
     private static Object obj2 = new Object();
-
     /**
      * 锁对象
      */
@@ -20,7 +19,6 @@ public class SynchronizedMethod {
             System.out.println(Thread.currentThread() + "qqq i==" + i);
         }
     }
-
     /**
      * 锁对象
      */
@@ -31,12 +29,21 @@ public class SynchronizedMethod {
             }
         }
     }
-
     /**
      * 锁对象
      */
     public void obj3() {
         synchronized (obj) {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(Thread.currentThread() + "qqq i==" + i);
+            }
+        }
+    }
+    /**
+     * 锁对象
+     */
+    public void obj4() {
+        synchronized (obj2) {
             for (int i = 0; i < 5; i++) {
                 System.out.println(Thread.currentThread() + "qqq i==" + i);
             }
@@ -52,16 +59,6 @@ public class SynchronizedMethod {
         }
     }
 
-    /**
-     * 锁类
-     */
-    public void class2() {
-        synchronized (obj2) {
-            for (int i = 0; i < 5; i++) {
-                System.out.println(Thread.currentThread() + "qqq i==" + i);
-            }
-        }
-    }
 
     /**
      * 锁类
